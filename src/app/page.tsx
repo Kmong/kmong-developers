@@ -6,7 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          만들고 싶은 것 마음 껏 만들어 봅시다.
+          만들고 싶은 것 마음 껏 만들어 봅시다
         </p>
         <div>
           <a
