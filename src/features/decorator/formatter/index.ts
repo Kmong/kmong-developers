@@ -1,7 +1,7 @@
-function formatter(formatFn: (value: any) => string): PropertyDecorator {
+export function formatter<T = string>(formatFn: (value: any) => T): PropertyDecorator {
   // @ts-ignore
   return function (target: any, propertyName: string) {
-    let value: string;
+    let value: T;
 
     const getter = function () {
       return value;
