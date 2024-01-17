@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import { captureException } from '@sentry/nextjs';
 import {
   Button, colors, dialog, Typography,
@@ -24,19 +25,29 @@ export default function Home() {
 
   return (
     <Main>
-      <Typography
-        variant="display1"
-        color="denim500"
-      >
-        Sentry-Playground
-      </Typography>
+      <Header>
+        <Typography
+          variant="display1"
+          color="denim500"
+        >
+          Kmong-Athens
+        </Typography>
+        <Nav>
+          <Link href="/coffee">
+            <Typography variant="body2">커피 페이지 바로가기</Typography>
+          </Link>
+          <Link href="/order">
+            <Typography variant="body2">주문 페이지 바로가기</Typography>
+          </Link>
+        </Nav>
+      </Header>
       <Button
         size="xlarge"
         onClick={handleClick}
       >
-        전송하기
+        에러 전송하기
       </Button>
-      <Typography variant="h1">Sentry-Playground에 오신 것을 환영합니다.</Typography>
+      <Typography variant="h1">크몽 아테네 2호의 새로운 기술을 Playground에서 미리 만나보세요.</Typography>
     </Main>
   );
 }
@@ -49,4 +60,30 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: space-between;
   background: linear-gradient(180deg, ${colors.denim[200]} 0%, ${colors.gray[100]} 100%);
+`;
+
+const Header = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  border-top: 1px solid ${colors.gray[400]};
+  text-align: center;
+`;
+
+const Link = styled(NextLink)`
+  color: ${colors.gray[800]};
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 `;
