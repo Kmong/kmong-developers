@@ -23,7 +23,7 @@ export default function Home() {
         variant="display1"
         color="denim500"
       >
-        Kmong-Athens
+        Sentry-Playground
       </Typography>
       <Button
         size="xlarge"
@@ -31,7 +31,7 @@ export default function Home() {
       >
         보러 가기
       </Button>
-      <Typography variant="h1">크몽 아테네 2호의 새로운 기술을 Playground에서 미리 만나보세요.</Typography>
+      <Typography variant="h1">Sentry-Playground에 오신 것을 환영합니다.</Typography>
     </Main>
   );
 }
