@@ -1,3 +1,4 @@
+import { captureException } from '@sentry/nextjs';
 import {
   Button, colors, dialog, Typography,
 } from '@kmong/ui';
@@ -6,14 +7,18 @@ import styled from '@emotion/styled';
 export default function Home() {
   const handleClick = async () => {
     const { isConfirmed } = await dialog.confirm({
-      title: '보러 가시겠습니까?',
-      html: '이 버튼을 누르면 어디로 갈지 아무도 모릅니다.',
+      title: '센트리에 에러를 전송하시겠습니까?',
+      html: '버튼을 누르면 무슨 일이 일어날지 아무도 모릅니다.',
       cancelButtonText: '닫기',
       confirmButtonText: '확인',
     });
 
     if (isConfirmed) {
-      window.location.href = 'https://kmong.com';
+      try {
+        throw new Error('이 에러는 의도적으로 발생시켰습니다.');
+      } catch (error) {
+        captureException(error);
+      }
     }
   };
 
@@ -29,7 +34,7 @@ export default function Home() {
         size="xlarge"
         onClick={handleClick}
       >
-        보러 가기
+        전송하기
       </Button>
       <Typography variant="h1">Sentry-Playground에 오신 것을 환영합니다.</Typography>
     </Main>
