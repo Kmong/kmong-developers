@@ -3,28 +3,55 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 import * as Sentry from "@sentry/nextjs";
+import packageInfo from './package.json';
 
 Sentry.init({
-  dsn: "https://78244d347b94fbc2be076209148d8ab4@o4506552386715648.ingest.sentry.io/4506552392417280",
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
-
+  debug: true,
+  environment: process.env.NODE_ENV,
+  release: packageInfo.version,
   replaysOnErrorSampleRate: 1.0,
 
   // This sets the sample rate to be 10%. You may want this to be 100% while
   // in development and sample at a lower rate in production
   replaysSessionSampleRate: 0.1,
-
-  // You can remove this option if you're not planning to use the Sentry Session Replay feature:
+  ignoreErrors: ['밀크티'],
+  // denyUrls: ['sentry-example-page'],
+  // allowUrls: ['sentry-example-page'],
+  autoSessionTracking: true,
   integrations: [
     new Sentry.Replay({
       // Additional Replay configuration goes in here, for example:
-      maskAllText: true,
+      maskAllText: false,
       blockAllMedia: true,
+    }),
+    new Sentry.Integrations.Breadcrumbs({
+      console: false,
+    }),
+    new Sentry.BrowserTracing({
+      shouldCreateSpanForRequest: (url) => {
+        // `/sentry-example-api`로 요청하는 경우 span을 생성하지 않는다. >> Performance 대시보드에 생성되지 않음
+        console.log('url', url);
+        // console.log('isMatch?', !url.match(/\/sentry-example-api?$/));
+        return !url.match(/\/sentry-example-api?$/);
+      },
+      beforeNavigate(context) {
+        console.log('beforeNavigate', context);
+
+        if(/^\/order\/\d+$/.test(context.name)) {
+          return {
+            ...context,
+            name: 'order/:id',
+          }
+        }
+
+        return context;
+      },
     }),
   ],
 });
