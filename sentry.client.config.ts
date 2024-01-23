@@ -37,8 +37,16 @@ Sentry.init({
       shouldCreateSpanForRequest: (url) => {
         // `/sentry-example-api`로 요청하는 경우 span을 생성하지 않는다. >> Performance 대시보드에 생성되지 않음
         console.log('url', url);
-        console.log('isMatch?', !url.match(/\/sentry-example-api?$/));
+        // console.log('isMatch?', !url.match(/\/sentry-example-api?$/));
         return !url.match(/\/sentry-example-api?$/);
+      },
+      beforeNavigate(this, context) {
+        console.log('beforeNavigate', context);
+        return {
+          ...context,
+          metadata: { source: "custom" },
+          name: "이게 뭐지?",
+        };
       },
     }),
   ],
