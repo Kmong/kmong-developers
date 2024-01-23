@@ -42,11 +42,15 @@ Sentry.init({
       },
       beforeNavigate(context) {
         console.log('beforeNavigate', context);
-        return {
-          ...context,
-          metadata: { source: "custom" },
-          name: "이게 뭐지?",
-        };
+
+        if(/^\/order\/\d+$/.test(context.name)) {
+          return {
+            ...context,
+            name: 'order/:id',
+          }
+        }
+
+        return context;
       },
     }),
   ],
