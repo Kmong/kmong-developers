@@ -50,12 +50,12 @@ export default function Page() {
           }}
           onClick={() => {
             Sentry.startSpan({
-              name: 'Example Frontend Span',
+              name: 'New Ignore Span',
               op: 'test'
             }, async () => {
               const res = await fetch("/api/sentry-example-api");
               if (!res.ok) {
-                throw new Error("Sentry Example Frontend Error");
+                throw new Error("New Ignore Span Error");
               }
             });
           }}

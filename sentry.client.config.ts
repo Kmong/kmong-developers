@@ -21,7 +21,7 @@ Sentry.init({
   // in development and sample at a lower rate in production
   replaysSessionSampleRate: 0.1,
   ignoreErrors: ['밀크티'],
-  denyUrls: ['sentry-example-page'],
+  // denyUrls: ['sentry-example-page'],
   // allowUrls: ['sentry-example-page'],
   autoSessionTracking: true,
   integrations: [
@@ -32,6 +32,14 @@ Sentry.init({
     }),
     new Sentry.Integrations.Breadcrumbs({
       console: false,
+    }),
+    new Sentry.BrowserTracing({
+      shouldCreateSpanForRequest: (url) => {
+        // `/sentry-example-api`로 요청하는 경우 span을 생성하지 않는다. >> Performance 대시보드에 생성되지 않음
+        console.log('url', url);
+        console.log('isMatch?', !url.match(/\/sentry-example-api?$/));
+        return !url.match(/\/sentry-example-api?$/);
+      },
     }),
   ],
 });
