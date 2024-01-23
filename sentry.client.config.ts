@@ -40,7 +40,7 @@ Sentry.init({
         // console.log('isMatch?', !url.match(/\/sentry-example-api?$/));
         return !url.match(/\/sentry-example-api?$/);
       },
-      beforeNavigate(this, context) {
+      beforeNavigate(context) {
         console.log('beforeNavigate', context);
         return {
           ...context,
