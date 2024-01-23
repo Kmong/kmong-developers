@@ -24,24 +24,6 @@ Sentry.init({
   denyUrls: ['sentry-example-page'],
   // allowUrls: ['sentry-example-page'],
   autoSessionTracking: true,
-  beforeBreadcrumb(breadcrumb, hint) {
-    console.log('[breadcrumb]');
-    console.log(breadcrumb);
-
-    return breadcrumb;
-  },
-  beforeSend(event, hint) {
-    console.log('[event]');
-    console.log(event);
-
-    return event;
-  },
-  beforeSendTransaction(transaction) {
-    console.log('[transaction]');
-    console.log(transaction);
-
-    return transaction;
-  },
   integrations: [
     new Sentry.Replay({
       // Additional Replay configuration goes in here, for example:

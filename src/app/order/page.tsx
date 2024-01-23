@@ -1,5 +1,5 @@
 "use client";
-
+import * as Sentry from "@sentry/nextjs";
 import { captureException } from "@sentry/nextjs";
 import styles from "./order.module.css";
 import Link from "next/link";
@@ -7,11 +7,19 @@ import Link from "next/link";
 function OrderPage() {
   const handleClickMenu = (name: string) => {
     console.log(`${name}을 주문합니다.`);
+    Sentry.startSpan({ name: "order-span" }, (span) => {
+      span?.setTag("menu", name);
+      console.log('span~~~~~')
+      console.log(span);
+    });
 
+    const transaction = Sentry.startTransaction({ name: "order-transaction" });
     try {
       throw new Error(`${name}을 주문하지 못했습니다.`);
     } catch (error) {
       captureException(error);
+    } finally {
+      transaction.finish();
     }
   }
 
