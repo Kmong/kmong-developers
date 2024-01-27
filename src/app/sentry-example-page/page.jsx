@@ -50,12 +50,12 @@ export default function Page() {
           }}
           onClick={() => {
             Sentry.startSpan({
-              name: 'New Ignore Span',
+              name: 'Lio의 span',
               op: 'test'
             }, async () => {
               const res = await fetch("/api/sentry-example-api");
               if (!res.ok) {
-                throw new Error("New Ignore Span Error");
+                throw new Error("Lio의 span에서 발생한 error입니다.");
               }
             });
           }}
