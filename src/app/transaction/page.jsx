@@ -49,6 +49,37 @@ export default function Page() {
               margin: "18px",
             }}
             onClick={() => {
+              Sentry.startSpanManual(
+                {
+                  name: 'Lio의 startSpanManual',
+                },
+                async span => {
+                  const res = await fetch("/api/sentry-example-api/span-manual");
+                  if (!res.ok) {
+                    throw new Error("Lio의 Lio의 startSpanManual 발생한 error입니다.");
+                  }
+              
+                  span.end();
+                },
+              );
+            }}
+          >
+            Throw Single error! (startSpanManual)
+          </button>
+
+          <button
+            type="button"
+            style={{
+              padding: "12px",
+              cursor: "pointer",
+              backgroundColor: "#AD6CAA",
+              borderRadius: "4px",
+              border: "none",
+              color: "white",
+              fontSize: "14px",
+              margin: "18px",
+            }}
+            onClick={() => {
               Sentry.startSpan({
                 name: 'Lio의 startInactiveSpan',
               }, async () => {
@@ -62,7 +93,7 @@ export default function Page() {
               });
             }}
           >
-            Throw Single error!
+            Throw Single error! (inactive span)
           </button>
 
           <button

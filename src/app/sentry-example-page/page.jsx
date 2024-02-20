@@ -49,6 +49,7 @@ export default function Page() {
             margin: "18px",
           }}
           onClick={() => {
+            Sentry.setTag('page', 'sentry-example-page');
             Sentry.startSpan({
               name: 'Lio의 span',
               op: 'test'
