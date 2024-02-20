@@ -83,13 +83,13 @@ export default function Page() {
               Sentry.startSpan({
                 name: 'Lio의 startInactiveSpan',
               }, async () => {
-                Sentry.startInactiveSpan({ name: 'inner1' });
-                Sentry.startInactiveSpan({ name: 'inner2' });
+                const inner1 = Sentry.startInactiveSpan({ name: 'inner1' });
+                const inner2 = Sentry.startInactiveSpan({ name: 'inner2' });
                 
                 const res = await fetch("/api/sentry-example-api/inactive");
-                if (!res.ok) {
-                  throw new Error("Lio의 startInactiveSpan에서 발생한 error입니다.");
-                }
+                
+                inner1.end();
+                inner2.end();
               });
             }}
           >
