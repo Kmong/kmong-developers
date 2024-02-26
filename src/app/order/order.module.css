@@ -1,0 +1,96 @@
+.main {
+  min-height: 100vh;
+  padding: 2rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.menus {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  width: 100%;
+  max-width: 200px;
+  margin: auto;
+}
+
+.menus > li {
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
+  background: #eaeaea;
+  font-size: 1.2rem;
+  padding: .5rem;
+  border-radius: .5rem;
+  line-height: 1;
+}
+
+.button:hover {
+  cursor: pointer;
+  outline: 2px solid #ddd;
+}
+
+.payment {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: #fdcf6f;
+  outline: 0;
+  border: 0;
+  font-weight: 700;
+  border-radius: 0.5rem;
+}
+
+.payment:hover {
+  cursor: pointer;
+  outline: 2px solid #f1c469;
+}
+
+.header {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.link {
+  color: #6e6e71;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.text {
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.5;
+}
