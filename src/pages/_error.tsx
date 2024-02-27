@@ -16,4 +16,6 @@ CustomErrorComponent.getInitialProps = async contextData => {
   return Error.getInitialProps(contextData);
 };
 
+
+
 export default CustomErrorComponent;
