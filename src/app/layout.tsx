@@ -1,3 +1,4 @@
+import '../main.css'
 import './globals.css'
 
 export default function RootLayout({
