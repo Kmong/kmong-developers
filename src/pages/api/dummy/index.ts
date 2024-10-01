@@ -12,6 +12,8 @@ export interface DummyPost {
   content: string;
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<DummyPost[]>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<DummyPost[]>) {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+
   res.status(200).json(posts);
 }
