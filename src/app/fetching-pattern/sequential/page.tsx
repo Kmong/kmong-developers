@@ -4,9 +4,7 @@ import { HelloData } from "@/pages/api/hello";
 import { Suspense } from "react";
 
 async function SequentialPage() {
-  const fetchA = await fetch("http://localhost:3000/api/hello?delay=3000", {
-    cache: 'no-store'
-  });
+  const fetchA = await fetch("http://localhost:3000/api/hello?delay=3000");
   const fetchAData: HelloData = await fetchA.json();
 
   return (
