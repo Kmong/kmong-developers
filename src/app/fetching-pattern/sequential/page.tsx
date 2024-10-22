@@ -1,6 +1,6 @@
 import Post from "@/app/_src/components/Post";
-import { DummyPost } from "@/pages/api/dummy";
-import { HelloData } from "@/pages/api/hello";
+import { DummyPost } from "@/app/api/dummy/route";
+import { HelloData } from "@/app/api/hello/route";
 import { Suspense } from "react";
 
 async function SequentialPage() {

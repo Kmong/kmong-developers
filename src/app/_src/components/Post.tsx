@@ -1,4 +1,4 @@
-import { DummyPost } from "@/pages/api/dummy";
+import { DummyPost } from "@/app/api/dummy/route";
 import React from "react";
 
 interface PostProps {

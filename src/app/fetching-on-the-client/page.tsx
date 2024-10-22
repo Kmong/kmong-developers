@@ -1,6 +1,6 @@
 "use client";
 
-import { DummyPost } from "@/pages/api/dummy";
+import { DummyPost } from "@/app/api/dummy/route";
 import { useQuery } from "@tanstack/react-query";
 import Post from "../_src/components/Post";
 

@@ -1,4 +1,4 @@
-import { Post } from "@/pages/api/posts/type";
+import { Post } from "@/app/api/posts/type";
 import Link from "next/link";
 import RevalidateButton from "./_src/RevalidateButton";
 

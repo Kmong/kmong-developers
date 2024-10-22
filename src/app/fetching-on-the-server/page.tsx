@@ -1,4 +1,4 @@
-import { DummyPost } from "@/pages/api/dummy";
+import { DummyPost } from "@/app/api/dummy/route";
 import Post from "../_src/components/Post";
 
 export default async function Page() {

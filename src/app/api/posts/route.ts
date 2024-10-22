@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import { Post } from "./type";
 
 const posts: Post[] = [
@@ -22,11 +22,8 @@ const posts: Post[] = [
   },
 ];
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Post[]>
-) {
+export async function GET() {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  res.status(200).json(posts);
+  return NextResponse.json(posts);
 }

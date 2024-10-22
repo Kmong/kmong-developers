@@ -1,6 +1,6 @@
 import Post from "@/app/_src/components/Post";
-import { DummyPost } from "@/pages/api/dummy";
-import { Post as PostType } from "@/pages/api/posts/type";
+import { DummyPost } from "@/app/api/dummy/route";
+import { Post as PostType } from "@/app/api/posts/type";
 import React, { Suspense } from "react";
 
 function ParallelSuspensePage() {

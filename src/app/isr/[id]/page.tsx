@@ -1,4 +1,4 @@
-import { Post as PostType } from "@/pages/api/posts/type";
+import { Post as PostType } from "@/app/api/posts/type";
 import Link from "next/link";
 
 export const revalidate = 60;
