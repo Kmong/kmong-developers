@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import createPost from "./createPost";
+import revalidateISRPage from "./revalidateISRPage";
 
 function RevalidateButton() {
   const handleClickRevalidate = async () => {
-    createPost();
+    revalidateISRPage();
   };
 
   return (

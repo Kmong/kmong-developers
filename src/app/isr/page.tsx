@@ -1,10 +1,10 @@
 import { Post } from "@/pages/api/posts/type";
 import Link from "next/link";
-import RevalidateButton from "./RevalidateButton";
+import RevalidateButton from "./_src/RevalidateButton";
 
 export const revalidate = 300;
 
-async function IsrPage() {
+async function ISRPage() {
   const posts: Post[] = await fetch("http://localhost:3000/api/posts").then(
     (res) => res.json()
   );
@@ -31,4 +31,4 @@ async function IsrPage() {
   );
 }
 
-export default IsrPage;
+export default ISRPage;

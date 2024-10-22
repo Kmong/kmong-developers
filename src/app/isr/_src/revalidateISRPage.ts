@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 
-async function createPost() {
+async function revalidateISRPage() {
   revalidatePath("/isr", "page");
 }
 
-export default createPost;
+export default revalidateISRPage;
