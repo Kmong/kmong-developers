@@ -1,8 +1,8 @@
 "use client";
 
-import { DummyPost } from "@/app/api/dummy/route";
 import { useQuery } from "@tanstack/react-query";
 import Post from "../_src/components/Post";
+import { DummyPost } from "../api/dummy/getDummy";
 
 export default function Posts() {
   const { data, isLoading } = useQuery({

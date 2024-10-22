@@ -1,5 +1,5 @@
 import Post from "@/app/_src/components/Post";
-import { DummyPost } from "@/app/api/dummy/route";
+import { DummyPost } from "@/app/api/dummy/getDummy";
 import { Post as PostType } from "@/app/api/posts/type";
 import React from "react";
 

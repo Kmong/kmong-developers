@@ -1,5 +1,5 @@
-import { DummyPost } from "@/app/api/dummy/route";
 import Post from "../_src/components/Post";
+import { DummyPost } from "../api/dummy/getDummy";
 
 export default async function Page() {
   const data = await fetch("http://localhost:3000/api/dummy");

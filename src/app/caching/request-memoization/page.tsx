@@ -1,6 +1,6 @@
 import Post from "@/app/_src/components/Post";
-import { DummyPost } from "@/app/api/dummy/route";
-import { HelloData } from "@/app/api/hello/route";
+import { DummyPost } from "@/app/api/dummy/getDummy";
+import { HelloData } from "@/app/api/hello/getHello";
 
 export const dynamic = "force-dynamic";
 

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "server-start": "cd mock-server && yarn run start",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

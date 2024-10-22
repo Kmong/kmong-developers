@@ -1,10 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { NextRequest, NextResponse } from "next/server";
-
-export type HelloData = {
-  name: string;
-  delay: number;
-};
+import { getHello } from "./getHello";
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
@@ -13,8 +9,9 @@ export async function GET(req: NextRequest) {
   const delayString = String(delay ?? "1000");
   const delayNumber = Number(delayString);
 
-  console.log('route handler - hello');
+  console.log("route handler - hello");
 
-  await new Promise((resolve) => setTimeout(resolve, delayNumber));
-  return NextResponse.json({ name: "John Doe", delay: delayNumber });
+  const data = await getHello(delayNumber);
+
+  return NextResponse.json(data);
 }
