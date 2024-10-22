@@ -13,6 +13,8 @@ export async function GET(req: NextRequest) {
   const delayString = String(delay ?? "1000");
   const delayNumber = Number(delayString);
 
+  console.log('route handler - hello');
+
   await new Promise((resolve) => setTimeout(resolve, delayNumber));
   return NextResponse.json({ name: "John Doe", delay: delayNumber });
 }
