@@ -3,6 +3,7 @@ import { getDummy } from "../../src/app/api/dummy/getDummy";
 import { getHello } from "../../src/app/api/hello/getHello";
 import { getPosts } from "../../src/app/api/posts/getPosts";
 import { getPost } from "../../src/app/api/posts/[id]/getPost";
+import { getAuth } from "../../src/app/api/auth/getAuth";
 
 const app = express();
 const port = 3000;
@@ -32,6 +33,16 @@ app.get("/api/posts", async (req: Request, res: Response) => {
   const posts = await getPosts();
 
   res.json(posts);
+});
+
+app.get("/api/auth", async (req: Request, res: Response) => {
+  const cookie = req.headers.cookie;
+  if (!cookie) {
+    res.status(401).json({ error: "No cookie" });
+  }
+  const auth = await getAuth();
+
+  res.json(auth);
 });
 
 app.get("/api/posts/:id", async (req: Request, res: Response) => {

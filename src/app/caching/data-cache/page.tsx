@@ -1,15 +1,19 @@
 import Post from "@/app/_src/components/Post";
+import auth from "@/app/_src/utils/auth";
 import { DummyPost } from "@/app/api/dummy/getDummy";
 import { HelloData } from "@/app/api/hello/getHello";
 
 export default async function Page() {
   const posts = await getPosts();
+  const authResponse = await auth();
+  const authData = await authResponse.json();
 
   return (
     <div className="flex flex-col gap-4 p-20">
       {posts.map((post) => (
         <Post key={post.id} post={post} />
       ))}
+      {authData.userId}
       <Hello />
     </div>
   );
@@ -19,11 +23,7 @@ async function Hello() {
   const hello = await getHello();
   console.log("Hello");
 
-  return (
-    <div>
-      {hello.name}
-    </div>
-  );
+  return <div>{hello.name}</div>;
 }
 
 const getPosts = async () => {
